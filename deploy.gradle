@@ -1,0 +1,44 @@
+apply plugin: 'maven'
+
+configurations {
+    deployerJars
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    deployerJars "org.apache.maven.wagon:wagon-http:2.2"
+}
+
+final UPLOAD_USERNAME_PROPERTY = "UPLOAD_USERNAME"
+final UPLOAD_PASSWORD_PROPERTY = "UPLOAD_PASSWORD"
+final POM_VERSION = "0.0.1-SNAPSHOT"
+
+uploadArchives {
+    doFirst {
+        def username = System.getenv(UPLOAD_USERNAME_PROPERTY)
+        def password = System.getenv(UPLOAD_PASSWORD_PROPERTY)
+
+        if (username == null || password == null) {
+            throw new GradleException("Cannot find repository credentials. Please specify environment variables ${UPLOAD_USERNAME_PROPERTY} and ${UPLOAD_PASSWORD_PROPERTY}")
+        }
+
+        repositories.mavenDeployer {
+            configuration = configurations.deployerJars
+            if (version == 'unspecified') {
+                pom.version = POM_VERSION
+            }
+            repository(url: "https://oda-maven.solita.fi/repository/snapshots") {
+                authentication(userName: username, password: password)
+            }
+        }
+   }
+}
+uploadArchives.dependsOn jar
+install.dependsOn jar
+
+task deploy(dependsOn: ['build', 'install', 'uploadArchives']) {
+
+}

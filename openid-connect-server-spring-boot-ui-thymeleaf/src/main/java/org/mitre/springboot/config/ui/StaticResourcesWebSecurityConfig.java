@@ -1,6 +1,5 @@
 package org.mitre.springboot.config.ui;
 
-import org.mitre.oauth2.web.CorsFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
@@ -10,6 +9,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.authentication.Http403ForbiddenEntryPoint;
 import org.springframework.security.web.context.SecurityContextPersistenceFilter;
+import org.springframework.web.filter.CorsFilter;
 
 @Order(140)
 @Configuration

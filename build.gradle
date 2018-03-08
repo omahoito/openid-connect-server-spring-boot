@@ -1,10 +1,10 @@
 subprojects {
 	buildscript {
 		ext {
-			springVersion = "4.3.7.RELEASE"
-			springBootVersion = "1.5.2.RELEASE"
-			springSecurityOauthVersion = "2.0.13.RELEASE"
-			openIdConnectVersion = "1.3.0"
+			springVersion = "4.3.14.RELEASE"
+			springBootVersion = "1.5.10.RELEASE"
+			springSecurityOauthVersion = "2.2.1.RELEASE"
+			openIdConnectVersion = "1.3.1"
 		}
 		repositories {
 			mavenCentral()
@@ -20,6 +20,7 @@ subprojects {
 	apply plugin: "java"
 	apply plugin: "maven"
 	apply plugin: "signing"
+	apply from: "$rootProject.projectDir/deploy.gradle"
 
 	ext {
 		baseVersion = "0.1.4"
@@ -28,7 +29,7 @@ subprojects {
 		projectVersion = baseVersion + (isSnapshot ? snapshotSuffix : "")
 	}
 
-	group = "net.simpledynamics"
+	group = "fi.oda"
 	version = projectVersion
 
 	sourceCompatibility = 1.8
@@ -60,7 +61,7 @@ subprojects {
 
 	project.ext.set("ossrhUsername",  project.hasProperty("ossrhUsername") ? ossrhUsername : System.getenv("SONATYPE_USERNAME"))
 	project.ext.set("ossrhPassword",  project.hasProperty("ossrhPassword") ? ossrhPassword : System.getenv("SONATYPE_PASSWORD"))
-	
+	/*
 	uploadArchives {
 		repositories {
 			mavenDeployer {
@@ -117,6 +118,7 @@ subprojects {
 				}
 			}
 		}
-	}
+	}*/
 	
 }
+

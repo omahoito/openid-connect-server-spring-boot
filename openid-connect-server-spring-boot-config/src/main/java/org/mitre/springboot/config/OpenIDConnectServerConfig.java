@@ -35,7 +35,6 @@ import org.mitre.oauth2.service.impl.UriEncodedClientUserDetailsService;
 import org.mitre.oauth2.token.ChainedTokenGranter;
 import org.mitre.oauth2.token.JWTAssertionTokenGranter;
 import org.mitre.oauth2.token.ScopeServiceAwareOAuth2RequestValidator;
-import org.mitre.oauth2.web.CorsFilter;
 import org.mitre.oauth2.web.OAuthConfirmationController;
 import org.mitre.openid.connect.config.ConfigurationPropertiesBean;
 import org.mitre.openid.connect.filter.AuthorizationRequestFilter;
@@ -107,7 +106,12 @@ import org.springframework.security.oauth2.provider.error.WebResponseExceptionTr
 import org.springframework.security.oauth2.provider.expression.OAuth2WebSecurityExpressionHandler;
 import org.springframework.security.oauth2.provider.token.TokenEnhancer;
 import org.springframework.security.web.authentication.Http403ForbiddenEntryPoint;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.filter.CorsFilter;
 import org.springframework.web.servlet.view.BeanNameViewResolver;
+
+import java.util.Arrays;
 
 @Configuration
 @ConditionalOnClass(EnableOpenIDConnectServer.class)
@@ -234,8 +238,8 @@ public class OpenIDConnectServerConfig{
     }
 
     @Bean
-    @ConditionalOnMissingBean(AuthorizationCodeServices.class)
-    public AuthorizationCodeServices defaultOAuth2AuthorizationCodeService(){
+    @ConditionalOnMissingBean(DefaultOAuth2AuthorizationCodeService.class)
+    public DefaultOAuth2AuthorizationCodeService defaultOAuth2AuthorizationCodeService(){
         return new DefaultOAuth2AuthorizationCodeService();
     }
 
@@ -336,10 +340,14 @@ public class OpenIDConnectServerConfig{
     public static class OAuthConfirmationControllerConfiguration{
     }
 
-    @Bean
-    @ConditionalOnMissingBean(name = "corsFilter")
-    public Filter corsFilter(){
-        return new CorsFilter();
+    @Bean(name="corsFilter")
+    public Filter corsFilter() {
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        CorsConfiguration config = new CorsConfiguration();
+        config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE"));
+        config.setAllowedHeaders(Arrays.asList("Access-Control-Allow-Origin", "Access-Control-Allow-Headers", "X-Requested-With,Origin,Content-Type, Accept, Authorization"));
+        source.registerCorsConfiguration("/**", config);
+        return new CorsFilter(source);
     }
 
     /*

@@ -4,7 +4,7 @@ subprojects {
 			springVersion = "4.3.14.RELEASE"
 			springBootVersion = "1.5.10.RELEASE"
 			springSecurityOauthVersion = "2.2.1.RELEASE"
-			openIdConnectVersion = "1.3.1"
+			openIdConnectVersion = "1.3.2"
 		}
 		repositories {
 			mavenCentral()

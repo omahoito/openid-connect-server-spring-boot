@@ -340,10 +340,12 @@ public class OpenIDConnectServerConfig{
     public static class OAuthConfirmationControllerConfiguration{
     }
 
-    @Bean(name="corsFilter")
+    @Bean
+    @ConditionalOnMissingBean(name = "corsFilter")
     public Filter corsFilter() {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration();
+        config.setAllowedOrigins(Arrays.asList("*"));
         config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE"));
         config.setAllowedHeaders(Arrays.asList("Access-Control-Allow-Origin", "Access-Control-Allow-Headers", "X-Requested-With,Origin,Content-Type, Accept, Authorization"));
         source.registerCorsConfiguration("/**", config);

@@ -1,3 +1,8 @@
+plugins {
+    id 'com.github.jk1.dependency-license-report' version '0.8'
+    id 'com.github.ben-manes.versions' version '0.17.0'
+    id 'org.owasp.dependencycheck' version '3.1.2'
+}
 
 dependencies {
     // Spring Boot Starters
@@ -23,4 +28,10 @@ dependencies {
     
     //Embedded test db
     testRuntime "com.h2database:h2:1.4.192"
+}
+
+dependencyCheck {
+    suppressionFile='owasp-dependency-suppression.xml'
+    cveValidForHours=8
+    skipConfigurations=['deployerJars']
 }

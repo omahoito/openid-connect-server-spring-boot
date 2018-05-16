@@ -15,7 +15,7 @@ dependencies {
 	compile("org.springframework.boot:spring-boot-starter-security:${springBootVersion}")
 	
 	runtime("org.springframework.boot:spring-boot-starter-thymeleaf:${springBootVersion}")
-    runtime("org.thymeleaf.extras:thymeleaf-extras-springsecurity4:2.1.2.RELEASE")
+    runtime("org.thymeleaf.extras:thymeleaf-extras-springsecurity4:2.1.3.RELEASE")
 
 }
 

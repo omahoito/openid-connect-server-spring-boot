@@ -7,33 +7,33 @@ plugins {
 dependencies {
     // Spring Boot Starters
     compile("org.springframework.boot:spring-boot-starter-web:${springBootVersion}")
-	compile("org.springframework.boot:spring-boot-starter-security:${springBootVersion}")
-	compile("org.springframework.security.oauth:spring-security-oauth2:${springSecurityOauthVersion}")	
-   	compile("org.springframework.boot:spring-boot-starter-data-jpa:${springBootVersion}") {
-    	exclude group: 'org.hibernate', module: 'hibernate-entitymanager'
+    compile("org.springframework.boot:spring-boot-starter-security:${springBootVersion}")
+    compile("org.springframework.security.oauth:spring-security-oauth2:${springSecurityOauthVersion}")
+       compile("org.springframework.boot:spring-boot-starter-data-jpa:${springBootVersion}") {
+        exclude group: 'org.hibernate', module: 'hibernate-entitymanager'
     }
 
     // OpenID Connect
     compile("org.mitre:openid-connect-server:${openIdConnectVersion}") {
-    	exclude group: 'org.springframework', module: 'spring-test'
+        exclude group: 'org.springframework', module: 'spring-test'
     }
-    compile("org.bouncycastle:bcprov-jdk15on:1.52")    
+    compile("org.bouncycastle:bcprov-jdk15on:1.52")
 
-    runtime("org.eclipse.persistence:org.eclipse.persistence.jpa:2.5.2") 
+    runtime("org.eclipse.persistence:org.eclipse.persistence.jpa:2.5.2")
     runtime("com.zaxxer:HikariCP:2.4.3")
 
-	runtime("org.springframework.boot:spring-boot-starter-logging:${springBootVersion}")
-    testCompile("org.springframework.boot:spring-boot-starter-test:${springBootVersion}")	
+    runtime("org.springframework.boot:spring-boot-starter-logging:${springBootVersion}")
+    testCompile("org.springframework.boot:spring-boot-starter-test:${springBootVersion}")
     testCompile("org.springframework.security:spring-security-test:4.2.6.RELEASE")
     testCompile("com.jayway.jsonpath:json-path:2.0.0")
     testCompile("org.apache.httpcomponents:httpclient:4.5.3")
-    
+
     //Embedded test db
     testRuntime "com.h2database:h2:1.4.192"
 }
 
 dependencyCheck {
-    suppressionFile='owasp-dependency-suppression.xml'
-    cveValidForHours=8
-    skipConfigurations=['deployerJars']
+    suppressionFile = 'owasp-dependency-suppression.xml'
+    cveValidForHours = 8
+    skipConfigurations = ['deployerJars']
 }

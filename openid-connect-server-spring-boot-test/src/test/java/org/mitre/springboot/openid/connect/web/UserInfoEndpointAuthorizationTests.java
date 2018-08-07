@@ -1,22 +1,23 @@
 package org.mitre.springboot.openid.connect.web;
 
-import static org.hamcrest.Matchers.is;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
-import javax.transaction.Transactional;
-
 import org.junit.Test;
 import org.mitre.openid.connect.web.UserInfoEndpoint;
 import org.mitre.springboot.oauth2.web.OAuthAuthorizationTestsBase;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 
+import javax.transaction.Transactional;
+
+import static org.hamcrest.Matchers.is;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 @Transactional
+
 public class UserInfoEndpointAuthorizationTests extends OAuthAuthorizationTestsBase {
-	
+
 	@Test
 	public void adminGetUserInfoEndpointSuccess() throws Exception {
 		String accessToken = getAdminAccessToken();

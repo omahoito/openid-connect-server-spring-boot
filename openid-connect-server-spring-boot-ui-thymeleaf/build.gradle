@@ -9,19 +9,16 @@ dependencies {
 	// OpenID Connect
     compile("org.mitre:openid-connect-server:${openIdConnectVersion}") {
     	exclude group: 'org.springframework', module: 'spring-test'
+        exclude group: 'org.springframework', module: 'spring-tx'
     }
-    compile("org.springframework.security.oauth:spring-security-oauth2:${springSecurityOauthVersion}")
-    compile("org.bouncycastle:bcprov-jdk15on:1.52")
-	// Override vulnerable versions with more recent releases
-	compile("org.springframework:spring-tx:${springVersion}")
-	compile('org.codehaus.groovy:groovy:2.4.15')
-	compile('ognl:ognl:3.0.21')
+    //compile("org.springframework.security.oauth:spring-security-oauth2:${springSecurityOauthVersion}")
+    compile("org.bouncycastle:bcprov-jdk15on:1.52")    
     
     compile("org.springframework.boot:spring-boot-starter-web:${springBootVersion}")
 	compile("org.springframework.boot:spring-boot-starter-security:${springBootVersion}")
 	
 	runtime("org.springframework.boot:spring-boot-starter-thymeleaf:${springBootVersion}")
-    runtime("org.thymeleaf.extras:thymeleaf-extras-springsecurity4:2.1.3.RELEASE")
+    runtime("org.thymeleaf.extras:thymeleaf-extras-springsecurity4:3.0.2.RELEASE")
 
 }
 

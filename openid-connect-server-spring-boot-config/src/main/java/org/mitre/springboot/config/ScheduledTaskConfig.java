@@ -1,8 +1,5 @@
 package org.mitre.springboot.config;
 
-import java.util.concurrent.Executor;
-import java.util.concurrent.Executors;
-
 import org.mitre.oauth2.service.impl.DefaultOAuth2AuthorizationCodeService;
 import org.mitre.oauth2.service.impl.DefaultOAuth2ProviderTokenService;
 import org.mitre.openid.connect.service.ApprovedSiteService;
@@ -10,19 +7,17 @@ import org.mitre.springboot.config.ScheduledTaskConfig.SchedulingEnabledConditio
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionOutcome;
 import org.springframework.boot.autoconfigure.condition.SpringBootCondition;
-import org.springframework.boot.bind.RelaxedPropertyResolver;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ConditionContext;
-import org.springframework.context.annotation.Conditional;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.ConfigurationCondition;
+import org.springframework.context.annotation.*;
 import org.springframework.core.env.Environment;
 import org.springframework.core.type.AnnotatedTypeMetadata;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.scheduling.annotation.SchedulingConfigurer;
 import org.springframework.scheduling.config.ScheduledTaskRegistrar;
+
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
 @Configuration
 @EnableScheduling
@@ -77,9 +72,10 @@ public class ScheduledTaskConfig implements SchedulingConfigurer {
 		@Override
 		public ConditionOutcome getMatchOutcome(ConditionContext context, AnnotatedTypeMetadata metadata) {
 			Environment environment = context.getEnvironment();
-			RelaxedPropertyResolver resolver = new RelaxedPropertyResolver(environment,
-					"openid.connect.scheduling.");
-			String enabled = resolver.getProperty("enabled");
+			//RelaxedPropertyResolver resolver = new RelaxedPropertyResolver(environment,
+			//		"openid.connect.scheduling.");
+			String enabled = environment.getProperty("openid.connect.scheduling.", "enabled");
+			//String enabled = resolver.getProperty("enabled");
 			if(enabled != null && Boolean.valueOf(enabled).equals(false)) {
 				return ConditionOutcome.noMatch("Task Scheduling is disabled");
 			}

@@ -40,7 +40,7 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter{
 
     @Bean
     @ConditionalOnMissingBean(JsonMessageSource.class)
-    @ConfigurationProperties(prefix = "openid.connect.jsonMessageSource")
+    @ConfigurationProperties(prefix = "openid.connect.json-message-source")
     public JsonMessageSource messageSource(@Value("classpath:/static/resources/js/locale/")
     final Resource baseDirectory, @Value("true")
     final Boolean useCodeAsDefaultMessage){

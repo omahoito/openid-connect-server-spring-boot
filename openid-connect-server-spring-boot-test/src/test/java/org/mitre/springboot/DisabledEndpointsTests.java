@@ -15,7 +15,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
-import org.springframework.boot.web.support.SpringBootServletInitializer;
+
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.web.FilterChainProxy;
 import org.springframework.test.context.ActiveProfiles;
@@ -39,7 +40,7 @@ public class DisabledEndpointsTests{
     @Configuration
     @SpringBootApplication
     @EnableOpenIDConnectServer
-    public static class DisabledBootApplication extends SpringBootServletInitializer{
+    public static class DisabledBootApplication extends SpringBootServletInitializer {
         public static void main(final String[] args){
             SpringApplication.run(DisabledBootApplication.class, args);
         }

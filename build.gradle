@@ -1,9 +1,9 @@
 subprojects {
 	buildscript {
 		ext {
-			springVersion = "4.3.17.RELEASE"
-			springBootVersion = "1.5.13.RELEASE"
-			springSecurityOauthVersion = "2.3.3.RELEASE"
+			springVersion = "5.0.8.RELEASE"
+			springBootVersion = "2.0.4.RELEASE"
+			springSecurityOauthVersion = "2.0.1.RELEASE"
 			openIdConnectVersion = "1.3.2"
 		}
 		repositories {
@@ -23,7 +23,7 @@ subprojects {
 	apply from: "$rootProject.projectDir/deploy.gradle"
 
 	ext {
-		baseVersion = "0.1.5"
+		baseVersion = "0.1.6"
 		isSnapshot = true
 		snapshotSuffix = "-SNAPSHOT"
 		projectVersion = baseVersion + (isSnapshot ? snapshotSuffix : "")

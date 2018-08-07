@@ -1,6 +1,6 @@
 buildscript {
 	ext {
-		springBootVersion = "1.5.2.RELEASE"
+		springBootVersion = "2.0.4.RELEASE"
 	}
 	repositories {
 		mavenCentral()
@@ -13,6 +13,7 @@ buildscript {
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
 
 eclipse.project.name = 'openid-connect-server-spring-boot-samples-default' 
 
@@ -25,9 +26,9 @@ dependencies {
 	 
 	compile ('net.simpledynamics:openid-connect-server-spring-boot-config:0.1.4-SNAPSHOT')
 	compile ('net.simpledynamics:openid-connect-server-spring-boot-ui-thymeleaf:0.1.4-SNAPSHOT')
-	compile ('org.mitre:openid-connect-server:1.3.0')
+	compile ('org.mitre:openid-connect-server:1.3.2')
 
-    runtime ('com.h2database:h2:1.4.192')
+    runtime ('com.h2database:h2')
 }
 
 uploadArchives.enabled = false

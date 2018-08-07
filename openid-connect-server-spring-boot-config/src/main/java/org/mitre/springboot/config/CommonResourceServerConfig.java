@@ -21,7 +21,7 @@ public class CommonResourceServerConfig extends ResourceServerConfigurerAdapter{
         this.oAuth2TokenEntityService = oAuth2TokenEntityService;
 
         //Change order of filter ResourceServer
-        resourceServerConfiguration.setFilterOrder(170);
+        //resourceServerConfiguration.setFilterOrder(170);
     }
 
     @Override

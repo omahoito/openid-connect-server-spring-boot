@@ -9,8 +9,10 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.oauth2.provider.expression.OAuth2WebSecurityExpressionHandler;
 
-@Order(700) 
-@Configuration
+// We do not want to inject this automatically. Please import this manually if needed
+// The automatic creation adds another security chain and might cause problems
+//@Order(700)
+//@Configuration
 public class CommonWebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired 

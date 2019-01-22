@@ -76,4 +76,11 @@
       <gav regex="true">^dom4j:dom4j:.*$</gav>
       <cve>CVE-2018-1000632</cve>
    </suppress>
+   <suppress>
+      <notes><![CDATA[
+   file name: spring-security-oauth2-autoconfigure-2.1.2.RELEASE.jar
+   ]]></notes>
+      <gav regex="true">^org\.springframework\.security\.oauth\.boot:spring-security-oauth2-autoconfigure:.*$</gav>
+      <cve>CVE-2018-15758</cve>
+   </suppress>
 </suppressions>

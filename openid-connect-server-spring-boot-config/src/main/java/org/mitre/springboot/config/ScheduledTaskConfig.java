@@ -74,7 +74,7 @@ public class ScheduledTaskConfig implements SchedulingConfigurer {
 			Environment environment = context.getEnvironment();
 			//RelaxedPropertyResolver resolver = new RelaxedPropertyResolver(environment,
 			//		"openid.connect.scheduling.");
-			String enabled = environment.getProperty("openid.connect.scheduling.", "enabled");
+			String enabled = environment.getProperty("openid.connect.scheduling.enabled", "true");
 			//String enabled = resolver.getProperty("enabled");
 			if(enabled != null && Boolean.valueOf(enabled).equals(false)) {
 				return ConditionOutcome.noMatch("Task Scheduling is disabled");

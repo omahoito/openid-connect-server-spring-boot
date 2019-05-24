@@ -21,7 +21,8 @@ dependencies {
     
     compile("org.springframework.boot:spring-boot-starter-web:${springBootVersion}")
 	compile("org.springframework.boot:spring-boot-starter-security:${springBootVersion}")
-	
+    compile('com.fasterxml.jackson.core:jackson-databind:2.9.9') // CVE-2019-12086
+
 	runtime("org.springframework.boot:spring-boot-starter-thymeleaf:${springBootVersion}")
     runtime("org.thymeleaf.extras:thymeleaf-extras-springsecurity4:3.0.2.RELEASE")
 

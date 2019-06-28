@@ -165,4 +165,18 @@
       <gav regex="true">^org\.springframework\.security:spring-security-jwt:.*$</gav>
       <cwe>79</cwe>
    </suppress>
+   <suppress>
+      <notes><![CDATA[
+   file name: jquery.js
+   ]]></notes>
+      <sha1>96c73f3774471cc8378c77a64ecf09b7f625d8b7</sha1>
+      <cve>CVE-2015-9251</cve>
+   </suppress>
+   <suppress>
+      <notes><![CDATA[
+   file name: jquery.js
+   ]]></notes>
+      <sha1>96c73f3774471cc8378c77a64ecf09b7f625d8b7</sha1>
+      <cve>CVE-2019-11358</cve>
+   </suppress>
 </suppressions>

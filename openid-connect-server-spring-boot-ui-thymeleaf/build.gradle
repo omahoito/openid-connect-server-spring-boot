@@ -14,14 +14,13 @@ dependencies {
     // Upgrade guava to safer version
     compile("com.google.guava:guava:27.0.1-jre")
 
-    //compile("org.springframework.security.oauth:spring-security-oauth2:${springSecurityOauthVersion}")
+    compile("org.springframework.security.oauth:spring-security-oauth2:${springSecurityOauthVersion}")
     compile("org.springframework.security.oauth.boot:spring-security-oauth2-autoconfigure:${springBootVersion}")
 
     compile("org.bouncycastle:bcprov-jdk15on:1.52")
     
     compile("org.springframework.boot:spring-boot-starter-web:${springBootVersion}")
 	compile("org.springframework.boot:spring-boot-starter-security:${springBootVersion}")
-    compile('com.fasterxml.jackson.core:jackson-databind:2.9.9') // CVE-2019-12086
 
 	runtime("org.springframework.boot:spring-boot-starter-thymeleaf:${springBootVersion}")
     runtime("org.thymeleaf.extras:thymeleaf-extras-springsecurity4:3.0.2.RELEASE")

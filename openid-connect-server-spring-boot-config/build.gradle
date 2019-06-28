@@ -13,7 +13,6 @@ dependencies {
    	compile("org.springframework.boot:spring-boot-starter-data-jpa:${springBootVersion}") {
     	exclude group: 'org.hibernate', module: 'hibernate-entitymanager'
     }
-    compile('com.fasterxml.jackson.core:jackson-databind:2.9.9') // CVE-2019-12086
     
     // OpenID Connect
     compile("org.mitre:openid-connect-server:${openIdConnectVersion}") {

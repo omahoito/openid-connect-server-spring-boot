@@ -179,4 +179,18 @@
       <sha1>96c73f3774471cc8378c77a64ecf09b7f625d8b7</sha1>
       <cve>CVE-2019-11358</cve>
    </suppress>
+   <suppress>
+      <notes><![CDATA[
+   file name: jackson-databind-2.9.9.jar
+   ]]></notes>
+      <gav regex="true">^com\.fasterxml\.jackson\.core:jackson-databind:.*$</gav>
+      <cve>CVE-2019-14379</cve>
+   </suppress>
+   <suppress>
+      <notes><![CDATA[
+   file name: jackson-databind-2.9.9.jar
+   ]]></notes>
+      <gav regex="true">^com\.fasterxml\.jackson\.core:jackson-databind:.*$</gav>
+      <cve>CVE-2019-14439</cve>
+   </suppress>
 </suppressions>

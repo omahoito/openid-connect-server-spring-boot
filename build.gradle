@@ -28,7 +28,7 @@ subprojects {
 	apply from: "$rootProject.projectDir/deploy.gradle"
 
 	ext {
-		baseVersion = "1.2.1"
+		baseVersion = "1.2.2"
 		isSnapshot = false
 		snapshotSuffix = "-SNAPSHOT"
 		projectVersion = baseVersion + (isSnapshot ? snapshotSuffix : "")

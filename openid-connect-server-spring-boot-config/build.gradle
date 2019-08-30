@@ -1,7 +1,7 @@
 plugins {
-    id 'com.github.jk1.dependency-license-report' version '1.2'
-    id 'com.github.ben-manes.versions' version '0.20.0'
-    id 'org.owasp.dependencycheck' version '5.0.0'
+    id 'com.github.jk1.dependency-license-report' version '1.9'
+    id 'com.github.ben-manes.versions' version '0.23.0'
+    id 'org.owasp.dependencycheck' version '5.2.1'
 }
 
 dependencies {
@@ -19,21 +19,19 @@ dependencies {
         exclude group: 'org.springframework', module: 'spring-test'
     }
 
-    // Upgrade guava to safer version
-    compile("com.google.guava:guava:27.0.1-jre")
-    compile("org.bouncycastle:bcprov-jdk15on:1.52")
+    compile("org.bouncycastle:bcprov-jdk15on:${bouncycastleVersion}")
 
-    runtime("org.eclipse.persistence:org.eclipse.persistence.jpa:2.5.2")
-    runtime("com.zaxxer:HikariCP:2.4.3")
+    runtime("org.eclipse.persistence:org.eclipse.persistence.jpa:2.7.4")
+    runtime("com.zaxxer:HikariCP:2.7.9")
 
     runtime("org.springframework.boot:spring-boot-starter-logging:${springBootVersion}")
     testCompile("org.springframework.boot:spring-boot-starter-test:${springBootVersion}")
-    testCompile("org.springframework.security:spring-security-test:4.2.6.RELEASE")
-    testCompile("com.jayway.jsonpath:json-path:2.0.0")
-    testCompile("org.apache.httpcomponents:httpclient:4.5.3")
+    testCompile("org.springframework.security:spring-security-test:${springSecurityTestVersion}")
+    testCompile("com.jayway.jsonpath:json-path:${jsonpathVersion}")
+    testCompile("org.apache.httpcomponents:httpclient:${httpclientVersion}")
 
     //Embedded test db
-    testRuntime "com.h2database:h2:1.4.192"
+    testRuntime "com.h2database:h2:${h2Version}"
 }
 
 dependencyCheck {

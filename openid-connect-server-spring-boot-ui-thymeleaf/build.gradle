@@ -1,7 +1,7 @@
 plugins {
-    id 'com.github.jk1.dependency-license-report' version '1.2'
-    id 'com.github.ben-manes.versions' version '0.20.0'
-    id 'org.owasp.dependencycheck' version '5.0.0'
+    id 'com.github.jk1.dependency-license-report' version '1.9'
+    id 'com.github.ben-manes.versions' version '0.23.0'
+    id 'org.owasp.dependencycheck' version '5.2.1'
 }
 
 dependencies {
@@ -11,19 +11,17 @@ dependencies {
     	exclude group: 'org.springframework', module: 'spring-test'
         exclude group: 'org.springframework', module: 'spring-tx'
     }
-    // Upgrade guava to safer version
-    compile("com.google.guava:guava:27.0.1-jre")
 
     compile("org.springframework.security.oauth:spring-security-oauth2:${springSecurityOauthVersion}")
     compile("org.springframework.security.oauth.boot:spring-security-oauth2-autoconfigure:${springBootVersion}")
 
-    compile("org.bouncycastle:bcprov-jdk15on:1.52")
+    compile("org.bouncycastle:bcprov-jdk15on:${bouncycastleVersion}")
     
     compile("org.springframework.boot:spring-boot-starter-web:${springBootVersion}")
 	compile("org.springframework.boot:spring-boot-starter-security:${springBootVersion}")
 
 	runtime("org.springframework.boot:spring-boot-starter-thymeleaf:${springBootVersion}")
-    runtime("org.thymeleaf.extras:thymeleaf-extras-springsecurity4:3.0.2.RELEASE")
+    runtime("org.thymeleaf.extras:thymeleaf-extras-springsecurity4:3.0.4.RELEASE")
 
 }
 

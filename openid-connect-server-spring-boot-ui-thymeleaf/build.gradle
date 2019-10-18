@@ -16,6 +16,7 @@ dependencies {
     compile("org.springframework.security.oauth.boot:spring-security-oauth2-autoconfigure:${springBootVersion}")
 
     compile("org.bouncycastle:bcprov-jdk15on:${bouncycastleVersion}")
+    compile("com.nimbusds:nimbus-jose-jwt:${joseJwtVersion}")
     
     compile("org.springframework.boot:spring-boot-starter-web:${springBootVersion}")
 	compile("org.springframework.boot:spring-boot-starter-security:${springBootVersion}")

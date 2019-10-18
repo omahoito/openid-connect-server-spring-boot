@@ -10,6 +10,7 @@ subprojects {
 			httpclientVersion = "4.5.9"
 			jsonpathVersion = "2.4.0"
 			h2Version = "1.4.199"
+			joseJwtVersion = "8.1"
 		}
 		repositories {
 			mavenCentral()
@@ -28,7 +29,7 @@ subprojects {
 	apply from: "$rootProject.projectDir/deploy.gradle"
 
 	ext {
-		baseVersion = "1.2.3"
+		baseVersion = "1.2.4"
 		isSnapshot = false
 		snapshotSuffix = "-SNAPSHOT"
 		projectVersion = baseVersion + (isSnapshot ? snapshotSuffix : "")

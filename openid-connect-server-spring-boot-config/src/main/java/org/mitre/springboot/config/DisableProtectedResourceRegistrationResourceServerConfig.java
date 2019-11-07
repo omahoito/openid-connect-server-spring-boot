@@ -9,8 +9,8 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.R
 
 /**
  *
- * This configuration is necessary because the application doesn´t work if the protectedresourcesregistration endpoint is disabled. 
- * 
+ * This configuration is necessary because the application doesn't work if the protectedresourcesregistration endpoint is disabled.
+ *
  */
 @Configuration
 @ConditionalOnProperty(havingValue = "false", name = "openid.connect.endpoints.protectedresourceregistration.enabled", matchIfMissing = true)

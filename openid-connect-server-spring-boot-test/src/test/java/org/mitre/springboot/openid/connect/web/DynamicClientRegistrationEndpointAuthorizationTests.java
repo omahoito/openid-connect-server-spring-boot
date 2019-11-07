@@ -70,10 +70,10 @@ public class DynamicClientRegistrationEndpointAuthorizationTests extends ApiAuth
 				.andReturn().getResponse().getContentAsString()
 				;
 
-		Map<String,String> resultMap = mapper.readValue(result, new TypeReference<Map<String,Object>>(){});
+		Map<String,Object> resultMap = mapper.readValue(result, new TypeReference<Map<String,Object>>(){});
 		
 		log.info("access token is " + resultMap.get("registration_access_token"));
-		String client_id = resultMap.get("client_id");
+		String client_id = (String) resultMap.get("client_id");
 		mockMvc.perform(
 				get("/register/"+client_id)
  				.contentType(MediaType.APPLICATION_JSON_VALUE)

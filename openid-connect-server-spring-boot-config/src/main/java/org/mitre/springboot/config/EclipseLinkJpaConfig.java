@@ -34,9 +34,8 @@ import org.springframework.transaction.jta.JtaTransactionManager;
 public class EclipseLinkJpaConfig extends JpaBaseConfiguration{
 
     public EclipseLinkJpaConfig(final DataSource dataSource, final JpaProperties properties,
-            final ObjectProvider<JtaTransactionManager> jtaTransactionManager,
-            final ObjectProvider<TransactionManagerCustomizers> transactionManagerCustomizers){
-        super(dataSource, properties, jtaTransactionManager, transactionManagerCustomizers);
+                                final ObjectProvider<JtaTransactionManager> jtaTransactionManager){
+        super(dataSource, properties, jtaTransactionManager);
     }
 
     @Override
@@ -49,8 +48,10 @@ public class EclipseLinkJpaConfig extends JpaBaseConfiguration{
      * */
     @Bean(name = "defaultTransactionManager")
     @Override
-    public PlatformTransactionManager transactionManager(){
-        return new JpaTransactionManager();
+    public PlatformTransactionManager transactionManager(ObjectProvider<TransactionManagerCustomizers> transactionManagerCustomizers){
+        JpaTransactionManager jpaTransactionManager = new JpaTransactionManager();
+        transactionManagerCustomizers.ifAvailable((customizers) -> customizers.customize(jpaTransactionManager));
+        return jpaTransactionManager;
     }
 
     /*

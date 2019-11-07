@@ -19,7 +19,7 @@ public class CommonWebSecurityConfig extends WebSecurityConfigurerAdapter {
 	private OAuth2WebSecurityExpressionHandler oAuth2WebSecurityExpressionHandler;
 	
 	@Override
-	public void configure(WebSecurity web) throws Exception {
+	public void configure(WebSecurity web) {
 		web.expressionHandler(oAuth2WebSecurityExpressionHandler);
 	}
 	

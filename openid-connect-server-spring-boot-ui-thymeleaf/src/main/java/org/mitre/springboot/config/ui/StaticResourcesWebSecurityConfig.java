@@ -21,7 +21,7 @@ public class StaticResourcesWebSecurityConfig extends WebSecurityConfigurerAdapt
 	private CorsFilter corsFilter;
 
 	@Override
-	public void configure(WebSecurity web) throws Exception {
+	public void configure(WebSecurity web) {
 		web.ignoring().antMatchers("/resources/**");
 	}
 

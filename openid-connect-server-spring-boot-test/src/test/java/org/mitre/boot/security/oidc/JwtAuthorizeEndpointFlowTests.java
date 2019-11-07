@@ -186,7 +186,7 @@ public class JwtAuthorizeEndpointFlowTests extends EndpointTestsBase{
         //Follow redirect back to authorize view
         final MvcResult authResult = mockMvc.perform(get(authorizeLocation).session(mockSession))
                 //.with(csrf())
-                .andDo(print()).andExpect(status().isFound())
+                .andDo(print()).andExpect(status().isSeeOther())
                 .andExpect(redirectedUrlPattern("http://whitelist.localhost/*")).andReturn();
         ;
 

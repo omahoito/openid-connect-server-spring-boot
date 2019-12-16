@@ -10,7 +10,7 @@ subprojects {
 			httpclientVersion = "4.5.9"
 			jsonpathVersion = "2.4.0"
 			h2Version = "1.4.200"
-			joseJwtVersion = "8.2"
+			joseJwtVersion = "8.3"
 		}
 		repositories {
 			mavenCentral()

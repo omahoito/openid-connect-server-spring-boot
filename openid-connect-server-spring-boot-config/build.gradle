@@ -7,11 +7,11 @@ plugins {
 dependencies {
     // Spring Boot Starters
     compile("org.springframework.boot:spring-boot-starter-web:${springBootVersion}")
-	compile("org.springframework.boot:spring-boot-starter-security:${springBootVersion}")
+    compile("org.springframework.boot:spring-boot-starter-security:${springBootVersion}")
     compile("org.springframework.security.oauth.boot:spring-security-oauth2-autoconfigure:${springBootVersion}")
-	compile("org.springframework.security.oauth:spring-security-oauth2:${springSecurityOauthVersion}")
-   	compile("org.springframework.boot:spring-boot-starter-data-jpa:${springBootVersion}") {
-    	exclude group: 'org.hibernate', module: 'hibernate-entitymanager'
+    compile("org.springframework.security.oauth:spring-security-oauth2:${springSecurityOauthVersion}")
+    compile("org.springframework.boot:spring-boot-starter-data-jpa:${springBootVersion}") {
+        exclude group: 'org.hibernate', module: 'hibernate-entitymanager'
     }
     
     // OpenID Connect
@@ -22,7 +22,7 @@ dependencies {
     compile("org.bouncycastle:bcprov-jdk15on:${bouncycastleVersion}")
     compile("com.nimbusds:nimbus-jose-jwt:${joseJwtVersion}")
 
-    runtime("org.eclipse.persistence:org.eclipse.persistence.jpa:2.7.4")
+    runtime("org.eclipse.persistence:org.eclipse.persistence.jpa:2.7.6")
     runtime("com.zaxxer:HikariCP:2.7.9")
 
     runtime("org.springframework.boot:spring-boot-starter-logging:${springBootVersion}")

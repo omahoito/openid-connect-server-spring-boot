@@ -23,7 +23,7 @@ dependencies {
     compile("com.nimbusds:nimbus-jose-jwt:${joseJwtVersion}")
 
     runtime("org.eclipse.persistence:org.eclipse.persistence.jpa:2.7.6")
-    runtime("com.zaxxer:HikariCP:2.7.9")
+    runtime("com.zaxxer:HikariCP:3.4.2")
 
     runtime("org.springframework.boot:spring-boot-starter-logging:${springBootVersion}")
     testCompile("org.springframework.boot:spring-boot-starter-test:${springBootVersion}")

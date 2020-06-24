@@ -224,7 +224,7 @@ public class JwtAuthorizeEndpointFlowTests extends EndpointTestsBase{
 
     protected void validateAccessToken(final SignedJWT accessToken, final String clientId) throws ParseException{
         Assert.assertEquals(clientId, accessToken.getJWTClaimsSet().getAudience().get(0));
-        Assert.assertEquals("http://localhost:-1/", accessToken.getJWTClaimsSet().getIssuer());
+        Assert.assertEquals("http://localhost:8080/", accessToken.getJWTClaimsSet().getIssuer());
         Assert.assertNotNull(accessToken.getJWTClaimsSet().getExpirationTime());
         Assert.assertNotNull(accessToken.getJWTClaimsSet().getIssueTime());
         Assert.assertNotNull(accessToken.getJWTClaimsSet().getJWTID());
@@ -238,7 +238,7 @@ public class JwtAuthorizeEndpointFlowTests extends EndpointTestsBase{
         Assert.assertEquals(nonce, idToken.getJWTClaimsSet().getStringClaim("nonce"));
         Assert.assertEquals(clientId, idToken.getJWTClaimsSet().getAudience().get(0));
         Assert.assertEquals("rsa1", idToken.getJWTClaimsSet().getStringClaim("kid"));
-        Assert.assertEquals("http://localhost:-1/", idToken.getJWTClaimsSet().getIssuer());
+        Assert.assertEquals("http://localhost:8080/", idToken.getJWTClaimsSet().getIssuer());
 
         Assert.assertNotNull(idToken.getJWTClaimsSet().getExpirationTime());
         Assert.assertNotNull(idToken.getJWTClaimsSet().getIssueTime());

@@ -19,6 +19,7 @@ import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.web.FilterChainProxy;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
@@ -32,6 +33,7 @@ import org.springframework.web.context.WebApplicationContext;
  *
  */
 @RunWith(SpringJUnit4ClassRunner.class)
+@DirtiesContext
 @SpringBootTest(classes = {DisabledBootApplication.class}, webEnvironment = WebEnvironment.DEFINED_PORT, properties = {
         "server.port=8091", "batch.metrics.enabled=true"})
 @ActiveProfiles("endpoints-disabled")

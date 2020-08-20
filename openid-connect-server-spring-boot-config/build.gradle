@@ -1,6 +1,6 @@
 plugins {
     id 'com.github.jk1.dependency-license-report' version '1.14'
-    id 'com.github.ben-manes.versions' version '0.28.0'
+    id 'com.github.ben-manes.versions' version '0.29.0'
     id 'org.owasp.dependencycheck' version '5.3.0'
 }
 
@@ -22,7 +22,7 @@ dependencies {
     compile("org.bouncycastle:bcprov-jdk15on:${bouncycastleVersion}")
     compile("com.nimbusds:nimbus-jose-jwt:${joseJwtVersion}")
 
-    runtime("org.eclipse.persistence:org.eclipse.persistence.jpa:2.7.6")
+    runtime("org.eclipse.persistence:org.eclipse.persistence.jpa:2.7.7")
     runtime("com.zaxxer:HikariCP:2.7.9")
 
     runtime("org.springframework.boot:spring-boot-starter-logging:${springBootVersion}")

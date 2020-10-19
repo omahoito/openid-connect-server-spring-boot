@@ -27,7 +27,7 @@ dependencies {
 }
 
 dependencyCheck {
-    suppressionFile = 'owasp-dependency-suppression.xml'
+    suppressionFile = '../owasp-dependency-suppression.xml'
     cveValidForHours = 8
     skipConfigurations = ['deployerJars']
 }

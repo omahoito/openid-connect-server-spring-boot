@@ -4,35 +4,37 @@ plugins {
     id 'org.owasp.dependencycheck' version '6.0.2'
 }
 
+apply plugin: 'java-library'
+
 dependencies {
     // Spring Boot Starters
-    compile("org.springframework.boot:spring-boot-starter-web:${springBootVersion}")
-    compile("org.springframework.boot:spring-boot-starter-security:${springBootVersion}")
-    compile("org.springframework.security.oauth.boot:spring-security-oauth2-autoconfigure:${springBootVersion}")
-    compile("org.springframework.security.oauth:spring-security-oauth2:${springSecurityOauthVersion}")
-    compile("org.springframework.boot:spring-boot-starter-data-jpa:${springBootVersion}") {
+    api("org.springframework.boot:spring-boot-starter-web:${springBootVersion}")
+    api("org.springframework.boot:spring-boot-starter-security:${springBootVersion}")
+    api("org.springframework.security.oauth.boot:spring-security-oauth2-autoconfigure:${springBootVersion}")
+    api("org.springframework.security.oauth:spring-security-oauth2:${springSecurityOauthVersion}")
+    api("org.springframework.boot:spring-boot-starter-data-jpa:${springBootVersion}") {
         exclude group: 'org.hibernate', module: 'hibernate-entitymanager'
     }
     
     // OpenID Connect
-    compile("org.mitre:openid-connect-server:${openIdConnectVersion}") {
+    api("org.mitre:openid-connect-server:${openIdConnectVersion}") {
         exclude group: 'org.springframework', module: 'spring-test'
     }
 
-    compile("org.bouncycastle:bcprov-jdk15on:${bouncycastleVersion}")
-    compile("com.nimbusds:nimbus-jose-jwt:${joseJwtVersion}")
+    implementation("org.bouncycastle:bcprov-jdk15on:${bouncycastleVersion}")
+    api("com.nimbusds:nimbus-jose-jwt:${joseJwtVersion}")
 
-    runtime("org.eclipse.persistence:org.eclipse.persistence.jpa:2.7.7")
-    runtime("com.zaxxer:HikariCP:2.7.9")
+    runtimeOnly("org.eclipse.persistence:org.eclipse.persistence.jpa:2.7.7")
+    runtimeOnly("com.zaxxer:HikariCP:2.7.9")
 
-    runtime("org.springframework.boot:spring-boot-starter-logging:${springBootVersion}")
-    testCompile("org.springframework.boot:spring-boot-starter-test:${springBootVersion}")
-    testCompile("org.springframework.security:spring-security-test:${springSecurityTestVersion}")
-    testCompile("com.jayway.jsonpath:json-path:${jsonpathVersion}")
-    testCompile("org.apache.httpcomponents:httpclient:${httpclientVersion}")
+    runtimeOnly("org.springframework.boot:spring-boot-starter-logging:${springBootVersion}")
+    testImplementation("org.springframework.boot:spring-boot-starter-test:${springBootVersion}")
+    testImplementation("org.springframework.security:spring-security-test:${springSecurityTestVersion}")
+    testImplementation("com.jayway.jsonpath:json-path:${jsonpathVersion}")
+    testImplementation("org.apache.httpcomponents:httpclient:${httpclientVersion}")
 
     //Embedded test db
-    testRuntime "com.h2database:h2:${h2Version}"
+    testRuntimeOnly "com.h2database:h2:${h2Version}"
 }
 
 dependencyCheck {

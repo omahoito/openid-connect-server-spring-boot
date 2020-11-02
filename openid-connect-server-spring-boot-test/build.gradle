@@ -6,16 +6,16 @@ plugins {
 
 dependencies {
   
- 	testCompile project(':openid-connect-server-spring-boot-config')
-	testCompile project(':openid-connect-server-spring-boot-ui-thymeleaf')
+ 	testImplementation project(':openid-connect-server-spring-boot-config')
+	testImplementation project(':openid-connect-server-spring-boot-ui-thymeleaf')
 	
-    testCompile("org.springframework.boot:spring-boot-starter-test:${springBootVersion}")
-    testCompile("org.springframework.security:spring-security-test:${springSecurityTestVersion}")
-    testCompile("com.jayway.jsonpath:json-path:${jsonpathVersion}")
-    testCompile("org.apache.httpcomponents:httpclient:${httpclientVersion}")
-    testCompile("org.bouncycastle:bcprov-jdk15on:${bouncycastleVersion}")
+    testImplementation("org.springframework.boot:spring-boot-starter-test:${springBootVersion}")
+    testImplementation("org.springframework.security:spring-security-test:${springSecurityTestVersion}")
+    testImplementation("com.jayway.jsonpath:json-path:${jsonpathVersion}")
+    testImplementation("org.apache.httpcomponents:httpclient:${httpclientVersion}")
+    testImplementation("org.bouncycastle:bcprov-jdk15on:${bouncycastleVersion}")
     
-    testRuntime "com.h2database:h2:${h2Version}"
+    testRuntimeOnly "com.h2database:h2:${h2Version}"
 }
 
 dependencyCheck {

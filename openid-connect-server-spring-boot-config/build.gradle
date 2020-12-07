@@ -10,7 +10,7 @@ dependencies {
 
     // OpenID Connect
     compile("org.mitre:openid-connect-server:${openIdConnectVersion}")
-    compile("org.bouncycastle:bcprov-jdk15on:1.52")    
+    compile("org.bouncycastle:bcprov-jdk15on:1.67")    
 
     runtime("org.eclipse.persistence:org.eclipse.persistence.jpa:2.5.2") 
     runtime("com.zaxxer:HikariCP:2.4.3")

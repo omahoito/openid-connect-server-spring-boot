@@ -13,7 +13,7 @@ dependencies {
     compile("org.bouncycastle:bcprov-jdk15on:1.52")    
 
     runtime("org.eclipse.persistence:org.eclipse.persistence.jpa:2.5.2") 
-    runtime("com.zaxxer:HikariCP:2.4.3")
+    runtime("com.zaxxer:HikariCP:3.4.5")
 
 	runtime("org.springframework.boot:spring-boot-starter-logging:${springBootVersion}")
     testCompile("org.springframework.boot:spring-boot-starter-test:${springBootVersion}")

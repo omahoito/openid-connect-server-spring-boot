@@ -27,7 +27,7 @@ dependencies {
 	compile ('net.simpledynamics:openid-connect-server-spring-boot-ui-thymeleaf:0.1.4-SNAPSHOT')
 	compile ('org.mitre:openid-connect-server:1.3.0')
 
-    runtime ('com.h2database:h2:1.4.192')
+    runtime ('com.h2database:h2:1.4.200')
 }
 
 uploadArchives.enabled = false

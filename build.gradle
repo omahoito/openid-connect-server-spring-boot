@@ -2,7 +2,7 @@ subprojects {
 	buildscript {
 		ext {
 			springVersion = "4.3.7.RELEASE"
-			springBootVersion = "1.5.2.RELEASE"
+			springBootVersion = "2.4.0"
 			springSecurityOauthVersion = "2.0.13.RELEASE"
 			openIdConnectVersion = "1.3.0"
 		}

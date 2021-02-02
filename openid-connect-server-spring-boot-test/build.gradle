@@ -10,6 +10,11 @@ dependencies {
 	testImplementation project(':openid-connect-server-spring-boot-ui-thymeleaf')
 	
     testImplementation("org.springframework.boot:spring-boot-starter-test:${springBootVersion}")
+    // For JUnit 4 tests
+    testImplementation("org.junit.vintage:junit-vintage-engine") {
+        exclude group: "org.hamcrest", module: "hamcrest-core"
+    }
+
     testImplementation("org.springframework.security:spring-security-test:${springSecurityTestVersion}")
     testImplementation("com.jayway.jsonpath:json-path:${jsonpathVersion}")
     testImplementation("org.apache.httpcomponents:httpclient:${httpclientVersion}")

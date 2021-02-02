@@ -8,7 +8,7 @@ subprojects {
 			openIdConnectVersion = "1.3.3"
 			bouncycastleVersion = "1.66"
 			httpclientVersion = "4.5.12"
-			jsonpathVersion = "2.4.0"
+			jsonpathVersion = "2.5.0"
 			h2Version = "1.4.200"
 			joseJwtVersion = "8.20"
 		}

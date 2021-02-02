@@ -7,7 +7,7 @@ subprojects {
 			springSecurityTestVersion = "5.4.2"
 			openIdConnectVersion = "1.3.3"
 			bouncycastleVersion = "1.66"
-			httpclientVersion = "4.5.12"
+			httpclientVersion = "4.5.13"
 			jsonpathVersion = "2.4.0"
 			h2Version = "1.4.200"
 			joseJwtVersion = "8.20"

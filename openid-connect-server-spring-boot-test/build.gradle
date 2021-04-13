@@ -5,10 +5,16 @@ plugins {
 }
 
 dependencies {
-  
- 	testImplementation project(':openid-connect-server-spring-boot-config')
-	testImplementation project(':openid-connect-server-spring-boot-ui-thymeleaf')
-	
+
+    constraints {
+        implementation("org.apache.httpcomponents:httpclient:${httpclientVersion}") {
+            because("old version has vulnerabilities")
+        }
+    }
+
+    testImplementation project(':openid-connect-server-spring-boot-config')
+    testImplementation project(':openid-connect-server-spring-boot-ui-thymeleaf')
+
     testImplementation("org.springframework.boot:spring-boot-starter-test:${springBootVersion}")
     // For JUnit 4 tests
     testImplementation("org.junit.vintage:junit-vintage-engine") {
@@ -19,7 +25,7 @@ dependencies {
     testImplementation("com.jayway.jsonpath:json-path:${jsonpathVersion}")
     testImplementation("org.apache.httpcomponents:httpclient:${httpclientVersion}")
     testImplementation("org.bouncycastle:bcprov-jdk15on:${bouncycastleVersion}")
-    
+
     testRuntimeOnly "com.h2database:h2:${h2Version}"
 }
 

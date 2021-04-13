@@ -1,7 +1,7 @@
 plugins {
     id 'com.github.jk1.dependency-license-report' version '1.14'
     id 'com.github.ben-manes.versions' version '0.34.0'
-    id 'org.owasp.dependencycheck' version '6.0.2'
+    id 'org.owasp.dependencycheck' version '6.1.5'
 }
 
 apply plugin: 'java-library'
@@ -15,10 +15,18 @@ dependencies {
     api("org.springframework.boot:spring-boot-starter-data-jpa:${springBootVersion}") {
         exclude group: 'org.hibernate', module: 'hibernate-entitymanager'
     }
-    
+
     // OpenID Connect
     api("org.mitre:openid-connect-server:${openIdConnectVersion}") {
         exclude group: 'org.springframework', module: 'spring-test'
+    }
+    constraints {
+        implementation("com.google.guava:guava:${guavaVersion}") {
+            because("old guava has vulnerabilities")
+        }
+        implementation("org.apache.httpcomponents:httpclient:${httpclientVersion}") {
+            because("old version has vulnerabilities")
+        }
     }
 
     implementation("org.bouncycastle:bcprov-jdk15on:${bouncycastleVersion}")

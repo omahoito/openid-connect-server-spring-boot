@@ -7,11 +7,16 @@ plugins {
 apply plugin: 'java-library'
 
 dependencies {
-	
-	// OpenID Connect
+
+    // OpenID Connect
     api("org.mitre:openid-connect-server:${openIdConnectVersion}") {
-    	exclude group: 'org.springframework', module: 'spring-test'
+        exclude group: 'org.springframework', module: 'spring-test'
         exclude group: 'org.springframework', module: 'spring-tx'
+    }
+    constraints {
+        implementation("com.google.guava:guava:${guavaVersion}") {
+            because("old guava has vulnerabilities")
+        }
     }
 
     api("org.springframework.security.oauth:spring-security-oauth2:${springSecurityOauthVersion}")
@@ -19,11 +24,11 @@ dependencies {
 
     implementation("org.bouncycastle:bcprov-jdk15on:${bouncycastleVersion}")
     api("com.nimbusds:nimbus-jose-jwt:${joseJwtVersion}")
-    
-    api("org.springframework.boot:spring-boot-starter-web:${springBootVersion}")
-	api("org.springframework.boot:spring-boot-starter-security:${springBootVersion}")
 
-	runtimeOnly("org.springframework.boot:spring-boot-starter-thymeleaf:${springBootVersion}")
+    api("org.springframework.boot:spring-boot-starter-web:${springBootVersion}")
+    api("org.springframework.boot:spring-boot-starter-security:${springBootVersion}")
+
+    runtimeOnly("org.springframework.boot:spring-boot-starter-thymeleaf:${springBootVersion}")
     runtimeOnly("org.thymeleaf.extras:thymeleaf-extras-springsecurity5:3.0.4.RELEASE")
 
 }

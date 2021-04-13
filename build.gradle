@@ -11,6 +11,7 @@ subprojects {
 			jsonpathVersion = "2.5.0"
 			h2Version = "1.4.200"
 			joseJwtVersion = "8.21"
+			guavaVersion = "30.1-jre" // due to vulns
 		}
 		repositories {
 			mavenCentral()
@@ -29,7 +30,7 @@ subprojects {
 	apply from: "$rootProject.projectDir/deploy.gradle"
 
 	ext {
-		baseVersion = "1.6.5"
+		baseVersion = "1.6.6"
 		isSnapshot = false
 		snapshotSuffix = "-SNAPSHOT"
 		projectVersion = baseVersion + (isSnapshot ? snapshotSuffix : "")

@@ -17,6 +17,9 @@ dependencies {
         implementation("com.google.guava:guava:${guavaVersion}") {
             because("old guava has vulnerabilities")
         }
+        implementation("org.apache.httpcomponents:httpclient:${httpclientVersion}") {
+            because("old version has vulnerabilities")
+        }
     }
 
     api("org.springframework.security.oauth:spring-security-oauth2:${springSecurityOauthVersion}")

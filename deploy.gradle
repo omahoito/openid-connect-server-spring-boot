@@ -33,6 +33,9 @@ uploadArchives {
             repository(url: "https://oda-maven.solita.fi/repository/snapshots") {
                 authentication(userName: username, password: password)
             }
+            repository(url: "https://maven.pkg.github.com/omahoito/omaolo") {
+                authentication(userName: System.getenv("GITHUB_PACKAGES_DEPLOY_USERNAME"), password: System.getenv("GITHUB_PACKAGES_DEPLOY_TOKEN"))
+            }
         }
    }
 }

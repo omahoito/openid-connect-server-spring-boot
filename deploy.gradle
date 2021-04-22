@@ -1,47 +1,55 @@
-apply plugin: 'maven'
-
-configurations {
-    deployerJars
-}
-
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-    deployerJars "org.apache.maven.wagon:wagon-http:2.2"
-}
+apply plugin: 'maven-publish'
 
 final UPLOAD_USERNAME_PROPERTY = "UPLOAD_USERNAME"
 final UPLOAD_PASSWORD_PROPERTY = "UPLOAD_PASSWORD"
-final POM_VERSION = "0.0.1-SNAPSHOT"
 
-uploadArchives {
+def getUsername = {
+    System.getenv(UPLOAD_USERNAME_PROPERTY)
+}
+
+def getPassword = {
+    System.getenv(UPLOAD_PASSWORD_PROPERTY)
+}
+
+task checkCredentials {
     doFirst {
-        def username = System.getenv(UPLOAD_USERNAME_PROPERTY)
-        def password = System.getenv(UPLOAD_PASSWORD_PROPERTY)
-
-        if (username == null || password == null) {
+        if (getUsername() == null || getPassword() == null) {
             throw new GradleException("Cannot find repository credentials. Please specify environment variables ${UPLOAD_USERNAME_PROPERTY} and ${UPLOAD_PASSWORD_PROPERTY}")
         }
+    }
+}
 
-        repositories.mavenDeployer {
-            configuration = configurations.deployerJars
-            if (version == 'unspecified') {
-                pom.version = POM_VERSION
-            }
-            repository(url: "https://oda-maven.solita.fi/repository/snapshots") {
-                authentication(userName: username, password: password)
-            }
-            repository(url: "https://maven.pkg.github.com/omahoito/omaolo") {
-                authentication(userName: System.getenv("GITHUB_PACKAGES_DEPLOY_USERNAME"), password: System.getenv("GITHUB_PACKAGES_DEPLOY_TOKEN"))
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+            artifact sourcesJar
+            artifact javadocJar
+        }
+    }
+
+    repositories {
+        maven {
+            url "https://oda-maven.solita.fi/repository/snapshots"
+            credentials {
+                username getUsername()
+                password getPassword()
             }
         }
-   }
+        maven {
+            name = "GitHubPackages"
+            url = "https://maven.pkg.github.com/omahoito/omaolo"
+            credentials {
+                username = System.getenv("GITHUB_PACKAGES_DEPLOY_USERNAME")
+                password = System.getenv("GITHUB_PACKAGES_DEPLOY_TOKEN")
+            }
+        }
+    }
 }
-uploadArchives.dependsOn jar
-install.dependsOn jar
 
-task deploy(dependsOn: ['build', 'install', 'uploadArchives']) {
 
-}
+publish.dependsOn build
+publish.dependsOn('checkCredentials')
+publishToMavenLocal.dependsOn build
+
+task deploy(dependsOn: ['build', 'publishToMavenLocal', 'publish'])

@@ -4,7 +4,7 @@ subprojects {
 			springVersion = "5.3.6"
 			springBootVersion = "2.4.5"
 			springSecurityOauthVersion = "2.5.1.RELEASE"	// CVE-2019-11269
-			springSecurityTestVersion = "5.4.6"
+			springSecurityTestVersion = "5.5.0"
 			openIdConnectVersion = "1.3.3"
 			bouncycastleVersion = "1.68"
 			httpclientVersion = "4.5.13"

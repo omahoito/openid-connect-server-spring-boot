@@ -1,7 +1,7 @@
 plugins {
     id 'com.github.jk1.dependency-license-report' version '1.14'
     id 'com.github.ben-manes.versions' version '0.38.0'
-    id 'org.owasp.dependencycheck' version '6.1.6'
+    id 'org.owasp.dependencycheck' version '6.2.0'
 }
 
 dependencies {

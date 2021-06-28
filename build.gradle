@@ -10,7 +10,7 @@ subprojects {
 			httpclientVersion = "4.5.13"
 			jsonpathVersion = "2.5.0"
 			h2Version = "1.4.200"
-			joseJwtVersion = "8.21"
+			joseJwtVersion = "9.10.1"
 			guavaVersion = "30.1-jre" // due to vulns
 		}
 		repositories {
